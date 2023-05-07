@@ -5,10 +5,14 @@
       <span>{{ '水果: ' + scope.label }}</span>
     </template>
   </lib-select>
-
-  <lib-signature></lib-signature>
+  <div>
+    <img v-if="signImg" :src="signImg" alt="" sizes="" />
+  </div>
+  <lib-signature @confirm="getInfo"></lib-signature>
 </template>
 <script lang="ts" setup>
+import { ref } from 'vue'
+import http from '../../../packages/utils/http'
 //   模拟调用接口
 function getRemoteData() {
   return new Promise<any[]>((resolve, reject) => {
@@ -41,6 +45,17 @@ function getRemoteData() {
 
 const selectedValue = (value: any) => {
   console.log(value)
+}
+
+let signImg = ref('')
+function getInfo(info: any) {
+  http({
+    url: '/api/File/Image/Upload',
+    method: 'post',
+    data: { imageData: info?.imageData, imageName: info?.fileInfo?.name }
+  }).then((r: any) => {
+    signImg.value = r?.Data
+  })
 }
 </script>
 <style lang="scss" scoped></style>

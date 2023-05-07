@@ -3,7 +3,7 @@
   <el-button type="primary" size="default" id="file" @click="uploadFile">请选择文件</el-button>
   <el-button type="primary" size="default" @click="startUpload()">开始上传</el-button>
 </template>
-<script setup lang="ts">
+<script lang="ts" setup>
 import plupload from 'plupload'
 import { ref } from 'vue'
 

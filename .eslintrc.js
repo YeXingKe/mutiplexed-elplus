@@ -55,6 +55,7 @@ module.exports = {
     'no-self-assign': 'off',
     'no-prototype-builtins': 'off',
     'no-cond-assign': 'off',
-    'no-fallthrough': 'off'
+    'no-fallthrough': 'off',
+    'no-unsafe-finally':'off',
   }
 }

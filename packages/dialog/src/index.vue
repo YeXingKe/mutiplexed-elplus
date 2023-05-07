@@ -56,6 +56,7 @@ const confirm = () => emit('confirm')
 
 // 向父组件暴露一下方法
 defineExpose({
+  dialogVisible,
   open,
   close,
   showLoading,
