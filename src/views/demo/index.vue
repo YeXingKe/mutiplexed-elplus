@@ -5,6 +5,8 @@
       <span>{{ '水果: ' + scope.label }}</span>
     </template>
   </lib-select>
+
+  <lib-signature></lib-signature>
 </template>
 <script lang="ts" setup>
 //   模拟调用接口

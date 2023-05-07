@@ -1,9 +1,9 @@
 <template>
-  <lib-notification :width="300" :num-value="numValue">
+  <!-- <lib-notification :width="300" :num-value="numValue">
     <template #default>
       <div><lib-list :list="list" :actions="actions"></lib-list></div>
     </template>
-  </lib-notification>
+  </lib-notification> -->
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

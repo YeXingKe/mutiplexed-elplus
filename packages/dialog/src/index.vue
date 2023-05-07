@@ -11,10 +11,12 @@
     </template>
     <slot></slot>
     <template #footer>
-      <el-button @click="close">{{ closeText }}</el-button>
-      <el-button class="ml-2" type="primary" @click="confirm" :loading="loading">
-        {{ confirmText }}
-      </el-button>
+      <slot name="footer">
+        <el-button @click="close">{{ closeText }}</el-button>
+        <el-button class="ml-2" type="primary" @click="confirm" :loading="loading">
+          {{ confirmText }}
+        </el-button>
+      </slot>
     </template>
   </el-dialog>
 </template>

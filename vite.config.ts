@@ -50,7 +50,10 @@ export default defineConfig({
   },
   server: {
     hmr: {
-      overlay: false
+      overlay: {
+        warnings: true,
+        errors: true
+      }
     },
     proxy: {
       '/api': {
