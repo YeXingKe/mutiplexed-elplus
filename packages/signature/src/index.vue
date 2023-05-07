@@ -23,7 +23,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import LibDialog from '../../dialog/src/index.vue'
-import { toast } from '../../utils'
+import { toast, dataURLToFile } from '../../utils'
 
 const props = defineProps({
   title: {
@@ -78,21 +78,6 @@ const confirm = () => {
   modalRef.value.close()
 }
 
-function dataURLToFile(baseFile, fileName) {
-  const arr = baseFile.split(',')
-  const imgType = arr[0].match(/:(.*?);/)[1] // 获取图片格式
-  // const decImg1 = global.Buffer.from(arr[1], 'base64') // 解码base-64 编码格式，或者使用atob(arr[1])
-  const decImg = atob(arr[1])
-  let len = decImg.length
-  const u8arr = new Uint8Array(len)
-  while (len--) {
-    u8arr[len] = decImg.charCodeAt(len) // 转成ASCII码
-  }
-  return new File([u8arr], fileName, { type: imgType })
-}
-// function initCanvas() {
-//   ctx.value = canvasRef.value.getContext('2d')
-// }
 function mousedown(event) {
   event.preventDefault()
   startX.value = event.offsetX

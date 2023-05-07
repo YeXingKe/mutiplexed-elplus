@@ -8,7 +8,8 @@
   <div>
     <img v-if="signImg" :src="signImg" alt="" sizes="" />
   </div>
-  <lib-signature @confirm="getInfo"></lib-signature>
+  <!-- <lib-signature @confirm="getInfo"></lib-signature> -->
+  <lib-stamp></lib-stamp>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -49,6 +50,7 @@ const selectedValue = (value: any) => {
 
 let signImg = ref('')
 function getInfo(info: any) {
+  console.log(info)
   http({
     url: '/api/File/Image/Upload',
     method: 'post',
