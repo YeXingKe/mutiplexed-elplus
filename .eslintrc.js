@@ -37,7 +37,7 @@ module.exports = {
     'vue/attribute-hyphenation': 'off',
     'vue/first-attribute-linebreak': 'off',
     'vue/no-setup-props-destructure': 'off',
-    'vue/v-on-event-hyphenation':'off',
+    'vue/v-on-event-hyphenation': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
@@ -55,7 +55,6 @@ module.exports = {
     'no-self-assign': 'off',
     'no-prototype-builtins': 'off',
     'no-cond-assign': 'off',
-    'no-fallthrough': 'off',
-    'no-unsafe-finally':'off',
+    'no-fallthrough': 'off'
   }
 }

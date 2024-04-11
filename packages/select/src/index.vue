@@ -6,7 +6,7 @@
       v-for="item in options"
       :key="item.value"
       :label="item.label"
-      :value="item.value"
+      :value="item.label"
       :disabled="item.disabled"
     >
       <slot :scope="item"></slot>
@@ -23,6 +23,10 @@ interface FetchSelectProps {
 const loading = ref(false)
 
 let props = defineProps({
+  selectedValue: {
+    type: String || Number,
+    default: ''
+  },
   options: {
     type: Array<SelectOptions>,
     default: []
@@ -33,8 +37,9 @@ let props = defineProps({
   }
 })
 
+console.log(props.options)
 let options = ref<SelectOptions[]>(props.options)
-let selectedValue = ref(null)
+let selectedValue = ref(props.selectedValue)
 
 const loadData = () => {
   loading.value = true
@@ -62,7 +67,9 @@ watch(selectedValue, (val: any) => {
 })
 
 onMounted(() => {
-  loadData()
+  if (props.apiFun) {
+    loadData()
+  }
 })
 </script>
 <style lang="scss" scoped></style>

@@ -7,10 +7,9 @@
 </template>
 
 <script lang="ts" setup>
-import { EventItem } from '../../components/calendar/src/types'
 import { ref } from 'vue'
 
-let events = ref<EventItem[]>([
+let events = ref([
   {
     title: '购物',
     start: '2021-11-11 10:00:00',

@@ -5,18 +5,8 @@
       <span>{{ '水果: ' + scope.label }}</span>
     </template>
   </lib-select>
-  <div>
-    <img v-if="signImg" :src="signImg" alt="" sizes="" />
-  </div>
-  <!-- <lib-signature @confirm="getInfo"></lib-signature> -->
-  <!-- <lib-stamp></lib-stamp> -->
-  <div v-stamp="stampOption" style="width: 400px; height: 400px"></div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
-import http from '../../../packages/utils/http'
-import { StampOptions } from '../../../packages/utils/stamp-option'
-let stampOption = new StampOptions({ position: 'absolute' })
 //   模拟调用接口
 function getRemoteData() {
   return new Promise<any[]>((resolve, reject) => {
@@ -49,18 +39,6 @@ function getRemoteData() {
 
 const selectedValue = (value: any) => {
   console.log(value)
-}
-
-let signImg = ref('')
-function getInfo(info: any) {
-  console.log(info)
-  http({
-    url: '/api/File/Image/Upload',
-    method: 'post',
-    data: { imageData: info?.imageData, imageName: info?.fileInfo?.name }
-  }).then((r: any) => {
-    signImg.value = r?.Data
-  })
 }
 </script>
 <style lang="scss" scoped></style>

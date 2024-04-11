@@ -11,12 +11,10 @@
     </template>
     <slot></slot>
     <template #footer>
-      <slot name="footer">
-        <el-button @click="close">{{ closeText }}</el-button>
-        <el-button class="ml-2" type="primary" @click="confirm" :loading="loading">
-          {{ confirmText }}
-        </el-button>
-      </slot>
+      <el-button @click="close">{{ closeText }}</el-button>
+      <el-button class="ml-2" type="primary" @click="confirm" :loading="loading">
+        {{ confirmText }}
+      </el-button>
     </template>
   </el-dialog>
 </template>
@@ -56,7 +54,6 @@ const confirm = () => emit('confirm')
 
 // 向父组件暴露一下方法
 defineExpose({
-  dialogVisible,
   open,
   close,
   showLoading,

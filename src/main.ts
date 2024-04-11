@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import App from './App.vue'
-import router from './router'
 import { registerIcons } from '../packages/utils/common'
 import lib from '../packages'
+import App from './App.vue'
+import router from './router'
 // 全局引入所有组件
 // import lib from '../lib/index.es.js';
 // 单独引入组件
@@ -14,7 +14,6 @@ import lib from '../packages'
 import 'tippy.js/dist/tippy.css' // tippy.js插件的样式
 
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
-import directives from '../packages/directives/index'
 import init from '../packages/utils/iconfont'
 
 import * as moment from 'moment'
@@ -33,8 +32,7 @@ registerIcons(app)
 app.use(ElementPlus, {
   locale: zhCn
 })
-app.use(directives)
-app.use(lib)
+lib.install(app)
 app.use(router)
 
 app.mount('#app')

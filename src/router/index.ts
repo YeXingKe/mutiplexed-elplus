@@ -1,28 +1,15 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
-import Container from '~/components/layout/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: Container,
+    component: Home,
     children: [
       {
         path: '/',
         component: Home
       },
-      {
-        path: '/chooseIcon',
-        component: () => import('../views/icon-list/index.vue')
-      },
-      // {
-      //   path: '/chooseArea',
-      // component: () => import('../views/choose-area/index.vue'),
-      // },
-      // {
-      //   path: '/trend',
-      //   component: () => import('../views/trend/index.vue'),
-      // },
       {
         path: '/notification',
         component: () => import('../views/notification/index.vue')
@@ -30,10 +17,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/menu',
         component: () => import('../views/menu/index.vue')
-      },
-      {
-        path: '/chooseCity',
-        component: () => import('../views/choose-city/index.vue')
       },
       {
         path: '/form',
