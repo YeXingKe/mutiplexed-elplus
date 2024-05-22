@@ -36,7 +36,9 @@ export default class SampleHashWorker {
       reader.readAsArrayBuffer(new Blob(chunks))
       reader.addEventListener('loadend', () => {
         spark.append(reader.result)
-        this.postMessage(spark.end())
+        if (this.postMessage) {
+          this.postMessage(spark.end())
+        }
       })
 
       reader.addEventListener('error', function _error(err) {
@@ -45,6 +47,6 @@ export default class SampleHashWorker {
     }
   }
   fileData: any
-  onmessage: ((this: Window, ev: MessageEvent) => any) | null
-  postMessage: (message: any, options?: WindowPostMessageOptions) => void
+  onmessage?: (this: Window, ev: MessageEvent) => any
+  postMessage?: (message: any, options?: WindowPostMessageOptions) => void
 }

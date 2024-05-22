@@ -1,4 +1,4 @@
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { Util } from '../../utils/util'
 import { ButtonColumn } from './models/columns/button-column'
 import { DatetimeColumn } from './models/columns/datetime-column'
@@ -39,15 +39,15 @@ export const advSearchColumnType = (column: TableColumn) => {
 }
 
 export const getDateRanges = () => {
-  const preDay = moment().subtract(1, 'day'),
-    preWeek = moment().subtract(1, 'week'),
-    preMon = moment().subtract(1, 'month'),
-    preQua = moment().subtract(1, 'quarter'),
-    preYear = moment().subtract(1, 'year')
+  const preDay = dayjs().subtract(1, 'day'),
+    preWeek = dayjs().subtract(1, 'week'),
+    preMon = dayjs().subtract(1, 'month'),
+    preQua = dayjs().subtract(1, 'quarter'),
+    preYear = dayjs().subtract(1, 'year')
   return [
     {
       text: '今天',
-      value: () => [moment().toDate(), moment().toDate()]
+      value: () => [dayjs().toDate(), dayjs().toDate()]
     },
     {
       text: '昨天',
@@ -55,7 +55,7 @@ export const getDateRanges = () => {
     },
     {
       text: '本周',
-      value: () => [moment().startOf('week').toDate(), moment().endOf('week').toDate()]
+      value: () => [dayjs().startOf('week').toDate(), dayjs().endOf('week').toDate()]
     },
     {
       text: '下周',
@@ -63,7 +63,7 @@ export const getDateRanges = () => {
     },
     {
       text: '本月',
-      value: () => [moment().startOf('month').toDate(), moment().endOf('month').toDate()]
+      value: () => [dayjs().startOf('month').toDate(), dayjs().endOf('month').toDate()]
     },
     {
       text: '上月',
@@ -71,7 +71,7 @@ export const getDateRanges = () => {
     },
     {
       text: '本季',
-      value: () => [moment().startOf('quarter').toDate(), moment().endOf('quarter').toDate()]
+      value: () => [dayjs().startOf('quarter').toDate(), dayjs().endOf('quarter').toDate()]
     },
     {
       text: '上季',
@@ -79,7 +79,7 @@ export const getDateRanges = () => {
     },
     {
       text: '本年',
-      value: () => [moment().startOf('year').toDate(), moment().endOf('year').toDate()]
+      value: () => [dayjs().startOf('year').toDate(), dayjs().endOf('year').toDate()]
     },
     {
       text: '本年',

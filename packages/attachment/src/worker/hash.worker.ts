@@ -17,7 +17,9 @@ export default class HashWorker {
         spark.append(content)
 
         const hash = spark.end()
-        this.postMessage(hash)
+        if (this.postMessage) {
+          this.postMessage(hash)
+        }
       })
       reader.addEventListener('error', function _error(err) {
         postMessage(err)
@@ -25,6 +27,6 @@ export default class HashWorker {
     }
   }
   fileData: any
-  onmessage: ((this: Window, ev: MessageEvent) => any) | null
-  postMessage: (message: any, options?: WindowPostMessageOptions) => void
+  onmessage?: (this: Window, ev: MessageEvent) => any
+  postMessage?: (message: any, options?: WindowPostMessageOptions) => void
 }

@@ -11,10 +11,13 @@
     </template>
     <slot></slot>
     <template #footer>
-      <el-button @click="close">{{ closeText }}</el-button>
-      <el-button class="ml-2" type="primary" @click="confirm" :loading="loading">
-        {{ confirmText }}
-      </el-button>
+      <slot name="footer" v-if="isCuscomFooter"></slot>
+      <div v-else>
+        <el-button @click="close">{{ closeText }}</el-button>
+        <el-button class="ml-2" type="primary" @click="confirm" :loading="loading">
+          {{ confirmText }}
+        </el-button>
+      </div>
     </template>
   </el-dialog>
 </template>
@@ -38,6 +41,10 @@ const props = defineProps({
   closeText: {
     type: String,
     default: '关闭'
+  },
+  isCuscomFooter: {
+    type: Boolean,
+    default: false
   }
 })
 

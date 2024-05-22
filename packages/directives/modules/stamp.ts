@@ -1,6 +1,6 @@
 import { DirectiveBinding, ObjectDirective, nextTick, ref } from 'vue'
-import { Util } from '../../utils/util'
-import { StampOptions } from '../../utils/stamp-option'
+import { Util } from '../../utils'
+import { StampOptions } from '../../defaultOptions'
 
 /**
  * v-stamp
@@ -85,8 +85,8 @@ const createStamp = function (element: HTMLElement, binding: DirectiveBinding) {
 
 function draw(canvas: any, settings: StampOptions) {
   let ctx = canvas.getContext('2d')
-  let width = settings.width / 2
-  let height = settings.height / 2
+  let width = settings.width ? settings.width / 2 : 0
+  let height = settings.height ? settings.height / 2 : 0
 
   ctx.lineWidth = settings.lineWidth
   ctx.strokeStyle = settings.strokeColor
@@ -107,9 +107,9 @@ function draw(canvas: any, settings: StampOptions) {
   // 绘制印章单位
   ctx.translate(width, height) // 平移到此位置,
   ctx.font = '23px 宋体'
-  let count = settings.outerText.length // 字数
+  let count = settings.outerText ? settings.outerText.length : 0 // 字数
   let angle = (4 * Math.PI) / (3 * (count - 1)) // 字间角度
-  let chars = settings.outerText.split('')
+  let chars = settings.outerText ? settings.outerText.split('') : ''
   let c
   for (let i = 0; i < count; i++) {
     c = chars[i] // 需要绘制的字符

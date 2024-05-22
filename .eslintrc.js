@@ -22,6 +22,7 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   // 用于指定自定义规则
   rules: {
+    'vue/no-mutating-props': 'off',
     'vue/component-definition-name-casing': 'off',
     'vue/multi-word-component-names': 'off',
     'vue/attributes-order': 'off',

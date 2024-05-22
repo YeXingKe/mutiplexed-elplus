@@ -8,8 +8,8 @@ const hasViewBox = /(viewBox="[^>+].*?")/g
 const clearReturn = /(\r)|(\n)/g // 清空换行符
 const clearFill = /(fill="[^>+].*?")/g // 清理 svg 的 fill
 
-function findSvgFile(dir: string = '../../../assets/icons/'): string[] {
-  const svgRes = []
+function findSvgFile(dir: string = '/icons/'): string[] {
+  const svgRes: any[] = []
   // readdirSync,返回一个包含“指定目录下所有文件名称”的数组对象
   // [ Dirent { name: 'vue.svg', [Symbol(type)]: 1 } ]
   const dirents = readdirSync(dir, {
@@ -55,9 +55,9 @@ function findSvgFile(dir: string = '../../../assets/icons/'): string[] {
  * @param perfix // 图标自定义前缀
  * @returns
  */
-export const svgBuilder = (path: string, perfix = 'local') => {
+export const svgBuilder = (path: string, prefix = 'local') => {
   if (path === '') return
-  idPrefix = perfix
+  idPrefix = prefix
   // 每个图标都是symbol标签，去掉了svg标签，只包含的svg内部嵌套标签，res是一个数组，每个元素就是一个图标
   const res = findSvgFile(path)
   return {
@@ -68,9 +68,9 @@ export const svgBuilder = (path: string, perfix = 'local') => {
         '<body>',
         `
         <body>
-        <svg id="local-icon" data-icon-name="${iconNames.join(',')}" 
-        xmlns="http://www.w3.org/2000/svg" 
-        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        <svg id="local-icon" data-icon-name="${iconNames.join(',')}"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
         style="position: absolute; width: 0; height: 0">
         ${res.join('')}
         </svg>

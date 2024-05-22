@@ -25,4 +25,6 @@ const directives = {
   }
 }
 
+export * from './modules'
+
 export default directives

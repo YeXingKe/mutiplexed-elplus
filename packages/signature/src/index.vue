@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-button type="primary" @click="sign">{{ btn }}</el-button>
-    <lib-dialog :title="title" ref="modalRef">
+    <lib-dialog :title="title" ref="modalRef" :isCuscomFooter="true">
       <div class="sign-bg">
         <canvas
           ref="canvasRef"
@@ -23,7 +23,8 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import LibDialog from '../../dialog/src/index.vue'
-import { toast, dataURLToFile } from '../../utils'
+import { Util } from '../../utils'
+import { ElMessage } from 'element-plus'
 
 const props = defineProps({
   title: {
@@ -68,12 +69,12 @@ const close = () => {
 const emits = defineEmits(['confirm'])
 const confirm = () => {
   if (points.length < 20) {
-    toast('签名不能为空！', 'error')
+    ElMessage.error('签名不能为空！')
     return
   }
   const baseFile = canvasRef.value.toDataURL() // 默认转成png格式的图片编码，这是base-64格式图片
   const fileName = Date.now() // 用时间戳做文件名
-  const file = dataURLToFile(baseFile, fileName) // 图片文件信息，传给后端存储
+  const file = Util.dataURLtoFile(baseFile, fileName + '') // 图片文件信息，传给后端存储
   emits('confirm', { fileInfo: file, imageData: baseFile }) // 暴露出去的信息
   modalRef.value.close()
 }

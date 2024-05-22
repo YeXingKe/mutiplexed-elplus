@@ -48,15 +48,15 @@ let props = defineProps({
     //失败之后的函数
     type: Function
   },
-  status: {
-    //或者用值来进行监听
-    type: String
+  resultFun: {
+    // 获取当前验证结果
+    type: Function
   }
 })
 
 let disX = ref(0) // 移动距离：当前位置距离右边
 let rangeStatus = ref(false)
-
+let emits = defineEmits(['resultFun'])
 //滑块移动
 function rangeMove(e) {
   let ele = e.target
@@ -88,10 +88,12 @@ function rangeMove(e) {
     if (disX.value !== MaxX) {
       ele.style.transition = '.5s all'
       ele.style.transform = 'translateX(0)'
+      emits('resultFun', false)
       //执行成功的函数
       props.errorFun && props.errorFun()
     } else {
       rangeStatus.value = true
+      emits('resultFun', true)
       //执行成功的函数
       props.successFun && props.successFun()
     }
@@ -106,6 +108,7 @@ function rangeMove(e) {
   justify-content: center;
   align-items: center;
 }
+
 .slider {
   background-color: #e9e9e9;
   position: relative;
@@ -113,21 +116,26 @@ function rangeMove(e) {
   user-select: none;
   color: #585858;
   border-radius: 8px;
+
   &-tip {
     width: 100%;
     height: 100%;
     @include jc-flex;
   }
+
   &.success {
     background-color: #3bc923;
     color: #fff;
+
     i {
       color: #3bc923;
     }
   }
+
   i {
     position: absolute;
-    width: 50px; /*no*/
+    width: 50px;
+    /*no*/
     height: 100%;
     color: #000;
     border-radius: 8px;

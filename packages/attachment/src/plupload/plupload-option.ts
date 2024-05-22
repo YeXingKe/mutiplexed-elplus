@@ -72,11 +72,11 @@ export class PluploadOption {
   /**
    * 服务器端接收和处理上传文件的脚本地址
    */
-  url: string
+  url: string | undefined
   /**
    * 触发文件选择框的DOM元素的ID，点击后显示文件选择框
    */
-  browse_button: string
+  browse_button: string | undefined
   /**
    * 用来指定上传方式，指定多个上传方式请使用逗号隔开。
    * 一般情况下，不需要配置该参数。

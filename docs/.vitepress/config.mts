@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -9,7 +10,10 @@ export default defineConfig({
   markdown: {
     // theme: 'material-theme-palenight',
     // lineNumbers: true,
-
+    config(md) {
+      md.use(containerPreview)
+      md.use(componentPreview)
+    },
     anchor: {
       slugify(str) {
         return encodeURIComponent(str);
@@ -36,6 +40,7 @@ export default defineConfig({
               { text: '封装组件库介绍', link: '/intro/' },
               { text: '如何搭建组件文档', link: '/intro/build' },
               { text: '如何规范组件代码', link: '/intro/specs' },
+              { text: '测试组件代码用例', link: '/intro/test.md' }
             ],
           },
           {
@@ -66,27 +71,27 @@ export default defineConfig({
             items: [
               {
                 text: '字母数字混合验证码',
-                link: '/components/alphanumeric'
+                link: '/components/md/alphanumeric'
               },
               {
                 text: '算术验证码',
-                link: '/components/arithmetic'
+                link: '/components/md/arithmetic'
               },
               {
                 text: '滑块验证码',
-                link: '/components/slider'
+                link: '/components/md/slider'
               },
               {
                 text: '图片旋转验证码',
-                link: '/components/rotate'
+                link: '/components/md/rotate'
               },
               {
                 text: '拼图验证码',
-                link: '/components/picture'
+                link: '/components/md/picture'
               },
               {
                 text: '文字顺序验证码',
-                link: '/components/characters'
+                link: '/components/md/characters'
               },
             ],
           },
@@ -95,63 +100,79 @@ export default defineConfig({
             // collapsed:true,
             items: [
               {
-                text: '表格组件',
-                link: '/components/table',
+                text: '选择组件',
+                link: '/components/md/select',
+              },
+              {
+                text: '图标组件',
+                link: '/components/md/icon',
+              },
+              {
+                text: '电子盖章',
+                link: '/components/md/stamp',
+              },
+              {
+                text: '电子签名',
+                link: '/components/md/signature',
               },
               {
                 text: '表单组件',
-                link: '/components/form',
+                link: '/components/md/form',
               },
               {
-                text: '附件组件',
-                link: '/components/attachment',
-              },
-              {
-                text: '日历组件',
-                link: '/components/calendar/',
-              },
-              {
-                text: '弹窗组件',
-                link: '/components/modal/',
-              },
-              {
-                text: '导入组件',
-                link: '/components/import/',
-              },
-              {
-                text: '日志组件',
-                link: '/components/import/',
-              },
-              {
-                text: '角色组件',
-                link: '/components/import/',
-              },
-              {
-                text: '权限组件',
-                link: '/components/import/',
+                text: '表格组件',
+                link: '/components/md/table',
               },
               {
                 text: '字典组件',
-                link: '/components/import/',
+                link: '/components/md/dict',
               },
+              {
+                text: '日历组件',
+                link: '/components/md/calendar',
+              },
+              {
+                text: '附件组件',
+                link: '/components/md/attachment',
+              },
+              // {
+              //   text: '弹窗组件',
+              //   link: '/components/md/modal',
+              // },
+              // {
+              //   text: '日志组件',
+              //   link: '/components/import/',
+              // },
+              // {
+              //   text: '角色组件',
+              //   link: '/components/import/',
+              // },
+              // {
+              //   text: '权限组件',
+              //   link: '/components/import/',
+              // },
+              // {
+              //   text: '字典组件',
+              //   link: '/components/md/dictionary/',
+              // },
             ],
           },
         ],
       },
     ],
     editLink: {
-      pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
+      pattern: 'https://github.com/wushengzhu/mutiplexed-elplus',
       text: 'Edit this page on GitHub',
     },
     socialLinks: [
       // { icon:{svg:''}, link: 'https://github.com/vuejs/vitepress' },
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+      { icon: 'github', link: 'https://github.com/wushengzhu/mutiplexed-elplus' },
     ],
     footer: {
       message:
-        'Released under the <a href="https://github.com/wushengzhu/mutiplexed-elplus?tab=MIT-1-ov-file">MIT License</a>.',
+        '本站仅用于学习使用，禁止商用',
       copyright:
-        'Copyright © 2024-present <a href="https://github.com/wushengzhu">wusheng zhu</a>',
+        'Copyright © 2024-present 最终解释权归<a href="https://github.com/wushengzhu">wusheng zhu</a>所有',
     },
     algolia: {
       appId: '...',
@@ -202,4 +223,24 @@ export default defineConfig({
       },
     },
   },
+  vite: {
+    plugins: [
+      // vue({
+      //   include: [/\.md$/], // 确保Vue组件和Markdown文件中的Vue代码块被处理
+      // }),
+    ],
+    resolve: {
+      alias: {
+        'element-plus': 'element-plus',
+      },
+    },
+  },
 });
+
+/**
+ * 预览组件用法一： <preview path="../components/demo/Demo.vue" title="基础用法" description="Button 组件的基础用法" />
+ * 预览组件用法二：
+ * :::preview
+ * demo-preview=../components/demo/Demo.vue
+ * :::
+ */

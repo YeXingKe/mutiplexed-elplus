@@ -19,10 +19,6 @@
                 <!-- <i :class="`iconfont ${item}`" style="font-size: 30px"></i> -->
                 <Icon :name="`iconfont ${item}`" />
               </template>
-              <template v-else-if="iconType === 'FontAwesome'">
-                <!-- <i :class="`fa ${item}`" style="font-size: 30px"></i> -->
-                <Icon :name="`fa ${item}`" />
-              </template>
               <template v-else-if="iconType === 'Local'">
                 <Icon :name="item" />
               </template>
@@ -68,7 +64,6 @@
 import { ref, onMounted } from 'vue'
 import { toLine } from '../../utils'
 import {
-  getAwesomeIconfontName,
   getElementPlusIconfontNames,
   getIconfontNames,
   getLocalIconfontNames
@@ -94,10 +89,11 @@ const iconfont = async () => {
   await getIconfontNames().then((data: any) => {
     iconfonts.value = data
   })
-  await getAwesomeIconfontName().then((data: any) => {
-    fontAwesomes.value = data
-  })
+  // await getAwesomeIconfontName().then((data: any) => {
+  //   fontAwesomes.value = data
+  // })
   await getLocalIconfontNames().then((data: any) => {
+    console.log('data=', data)
     localIcons.value = data
   })
 }

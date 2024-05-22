@@ -1,6 +1,6 @@
 import { DirectiveBinding, ObjectDirective, nextTick, ref } from 'vue'
-import { WMOptions } from '../../utils/water-mark-option'
-import { Util } from '../../utils/util'
+import { Util } from '../../utils'
+import { WMOptions } from '../../defaultOptions'
 
 /**
  * v-water-mask
@@ -38,7 +38,7 @@ function findBreakPoint(text: string, width: number, context: any) {
 
 // 根据最大宽度切割文字
 function breakLinesForCanvas(context: any, text: string, width: number, font: string) {
-  const result = []
+  const result: any = []
   let maxWidth = 0
 
   if (font) {
@@ -47,7 +47,9 @@ function breakLinesForCanvas(context: any, text: string, width: number, font: st
 
   let breakPoint = findBreakPoint(text, width, context)
   while (breakPoint !== -1) {
-    result.push(text.substring(0, breakPoint))
+    if (text) {
+      result.push(text.substring(0, breakPoint))
+    }
     text = text.substring(breakPoint)
     maxWidth = width
     breakPoint = findBreakPoint(text, width, context)

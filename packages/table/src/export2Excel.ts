@@ -1,5 +1,5 @@
 import { saveAs } from 'file-saver'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import * as XLSX from 'xlsx'
 import { WorkBook, WorkSheet } from 'xlsx'
 
@@ -15,7 +15,7 @@ class workBook implements WorkBook {
   Sheets: { [sheet: string]: WorkSheet } = {} // 工作表
 }
 const parseTime = (date: any) => {
-  return moment(new Date(date)).format('yyyy/MM/DD HH:mm')
+  return dayjs(new Date(date)).format('yyyy/MM/DD HH:mm')
 }
 const sheetFormDataArray = (data: Array<any>) => {
   const ws: { [key: string]: any } = {}

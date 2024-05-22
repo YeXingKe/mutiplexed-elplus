@@ -4,7 +4,8 @@
       :advSearchColumn="advSearchColumn"
       ref="advSearchFormRef"
       @adv-search="getAdvFormData"
-    ></AdvSearchForm>
+    >
+    </AdvSearchForm>
   </template>
 
   <div class="mb-sm" style="display: flex; justify-content: space-between">
@@ -261,9 +262,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, reactive } from '@vue/reactivity'
-import { onMounted, PropType, ref, watch, onBeforeMount, nextTick } from 'vue'
-import { toast, toLine } from '../../utils'
+import { onMounted, PropType, ref, watch, onBeforeMount, nextTick, computed, reactive } from 'vue'
+import { toLine } from '../../utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { exportJson2Excel } from './export2Excel'
 import { Search } from '@element-plus/icons-vue'
@@ -276,7 +276,8 @@ import { tableColumnType } from './table-util'
 import AdvSearchForm from './components/AdvSearchForm.vue'
 import { AdvSearchValue } from './models/adv-search-value'
 import ImportData from './components/ImportData.vue'
-import moment from 'moment'
+import dayjs from 'dayjs'
+import { ElMessage } from 'element-plus'
 
 let props = defineProps({
   // 表格配置
@@ -530,7 +531,7 @@ const handleExport = () => {
   if (data.length > 0) {
     exportJson2Excel(headers, data, tableOptions.value.importAndExportOption?.Name, 'xlsx', true)
   } else {
-    toast('没有数据导出！', 'error')
+    ElMessage.error('没有数据导出！')
   }
 }
 
@@ -565,7 +566,7 @@ const radioTypeChange = ev => {
 }
 
 const formatter = (row: any, column: any, cellValue: any, index: any) => {
-  const value = moment(new Date(cellValue)).format('YYYY/MM/DD HH:mm')
+  const value = dayjs(new Date(cellValue)).format('YYYY/MM/DD HH:mm')
   return value
 }
 

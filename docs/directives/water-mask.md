@@ -1,9 +1,21 @@
 # 水印指令
 
-## 基本用法
+## 组件介绍
+
+### 示例
+:::preview
+demo-preview=../components/examples/WaterMaskExample.vue
+:::
+<div style="width: 200px;height: 100px;" v-water-mask="{
+  textArr: ['路灯下的光']
+}">
+</div>
+
+### 属性
 
 
-## 如何封装
+
+## 组件封装
 
 页面水印业务相信我们都有遇过，为什么需要给页面添加水印？为了保护自己的版权和知识产权，给图片加上水印一般是为了防止盗图者用于商业用途，损害原作者的权益。那么在我们开发当中有什么方法可以实现呢？一般分为前端实现和后端实现这两种方法，本文主要是学习前端实现方法：
 - **方式一**：`直接将字体用块元素包裹，动态设置绝对定位，然后通过transform属性旋转`。但是需要考虑一个问题，当图片过大或图片过多时会很影响性能，所以就不详细说这一方式了。
@@ -28,7 +40,7 @@ const wmOption = reactive<WMOptions>({
 ```
 效果如下图所示：
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/81ea0ac4ee5c4ee18c74ad0dda43cd31~tplv-k3u1fbpfcp-watermark.image?)
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/81ea0ac4ee5c4ee18c74ad0dda43cd31~tplv-k3u1fbpfcp-watermark.image?"/>
 从上图中我们可以看出，`文字有文本以及时间字符串，水印文字都是倾斜了一定角度`，其实就是旋转了一定角度的。那么问题来了，我们可能问这些是怎么设置的？首先这需要使用指令的时候通过一些配置来实现一些固定值，下面这里都把这些配置都封装成一个类了，为什么要这样做？这样就不用使用的时候每次都要设定一个默认值，比如通过定义接口来引用这些配置时每次都需要设置一个默认值：
 
 ```js

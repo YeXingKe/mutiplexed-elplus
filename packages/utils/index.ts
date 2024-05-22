@@ -1,5 +1,3 @@
-import { ElMessage } from 'element-plus'
-
 // 把驼峰转换成横杠链接
 export const toLine = (value?: string) => {
   if (value) {
@@ -7,11 +5,6 @@ export const toLine = (value?: string) => {
   }
 }
 
-export function toast(message: string, type = 'success') {
-  ElMessage({
-    showClose: true,
-    message,
-    center: true,
-    type
-  })
-}
+export * from './common'
+export * from './util'
+export * from './iconfont'

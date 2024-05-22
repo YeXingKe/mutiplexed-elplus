@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+// import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import { registerIcons } from '../packages/utils/common'
@@ -13,24 +14,14 @@ import router from './router'
 
 import 'tippy.js/dist/tippy.css' // tippy.js插件的样式
 
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import init from '../packages/utils/iconfont'
-
-import * as moment from 'moment'
-import * as momentTimezone from 'moment-timezone'
-
-/**
- * 强制全局moment使用中国时区
- */
-momentTimezone.tz.setDefault('Asia/Shanghai')
-moment.locale('zh-cn')
 
 const app = createApp(App)
 
 init()
 registerIcons(app)
 app.use(ElementPlus, {
-  locale: zhCn
+  // locale: zhCn
 })
 lib.install(app)
 app.use(router)

@@ -106,16 +106,15 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, toRefs } from '@vue/reactivity'
 import { cloneDeep } from 'lodash-es'
-import { PropType, ref, onMounted } from 'vue'
+import { PropType, ref, onMounted, computed, toRefs } from 'vue'
 import { FormInstance } from '../../../form/types/types'
 import { TableColumn } from '../models/columns/table-column'
 import { stringTypeCondition, numberTypeCondition } from '../models/consts'
 import { advSearchColumnType, getDateRanges, tableColumnType } from '../table-util'
 import { AdvSearchValue } from '../models/adv-search-value'
 import { Util } from '../../../utils/util'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 interface FormOptions {
   // 表单项的值
@@ -187,8 +186,8 @@ const advSearch = () => {
     if (item.prop && model.value[item.prop]) {
       if (advSearchColumnType(item) === 'datetime') {
         const val = toRefs(model.value[item.prop])
-        const start = moment(new Date(val[0].value)).format('YYYY-MM-DD HH:mm')
-        const end = moment(new Date(val[1].value)).format('YYYY-MM-DD HH:mm')
+        const start = dayjs(new Date(val[0].value)).format('YYYY-MM-DD HH:mm')
+        const end = dayjs(new Date(val[1].value)).format('YYYY-MM-DD HH:mm')
         temp.push({
           operator: '$eq',
           field: item.prop,

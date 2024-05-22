@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <span class="mr-sm">
       附件分片长度（MB）：
@@ -8,13 +8,7 @@
   <el-divider />
   <lib-table :columns="columns" :options="options" ref="tableList">
     <template #tablePrefix>
-      <input
-        type="file"
-        :multiple="true"
-        class="upload-input"
-        @change="handleFileChange"
-        ref="uploadFileRef"
-      />
+      <input type="file" :multiple="true" class="upload-input" @change="handleFileChange" ref="uploadFileRef" />
       <el-button type="primary" class="mr-sm" @click.prevent="uploadFile()">
         <el-icon class="mr-sm">
           <Upload />
@@ -110,7 +104,7 @@ curPercent = computed(() => {
   const loaded = list.reduce((acc, cur) => {
     return acc + cur
   }, 0)
-  return parseInt((loaded / container.file.size).toFixed(2))
+  return parseInt((loaded / container.file?.size).toFixed(2))
 })
 
 watch(curPercent, now => {
@@ -134,8 +128,8 @@ const handleFileChange = event => {
     handleUpload()
   })
 }
-const downloadMore = () => {}
-const deleteMore = () => {}
+const downloadMore = () => { }
+const deleteMore = () => { }
 
 async function handleUpload() {
   if (!container.file) {
@@ -196,4 +190,12 @@ function getFileByteFormat(num) {
   height: 0;
   overflow: hidden;
 }
-</style>
+</style> -->
+<!--  -->
+<template>
+  <div></div>
+</template>
+<script setup lang="ts">
+import { ref } from 'vue'
+</script>
+<style lang="scss" scoped></style>

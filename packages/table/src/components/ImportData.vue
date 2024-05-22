@@ -23,12 +23,12 @@
 <script lang="ts" setup>
 import { reactive, ref, watch, onMounted } from 'vue'
 import * as XLSX from 'xlsx'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { TableColumn } from '../models/columns/table-column'
 import { Util } from '../../../utils/util'
 import { tableColumnType } from '../table-util'
 import http from '../../../utils/http'
-import { toast } from '../../../utils/index'
+import { ElMessage } from 'element-plus'
 
 interface Props {
   accept?: string
@@ -162,11 +162,11 @@ function excelDataToJson(sheetJson: any[]) {
   excelData.forEach(item => {
     http.post(url, item).then(
       () => {
-        toast('导入成功！')
+        ElMessage.success('导入成功！')
         emits('reload', true)
       },
       err => {
-        toast('导入失败！', 'error')
+        ElMessage.error('导入失败！')
       }
     )
   })
@@ -196,7 +196,7 @@ function formatExcelDate(num: number, format: string = 'YYYY-MM-DD HH:mm:ss') {
     minutes,
     seconds
   )
-  const result = moment(date).format(format)
+  const result = dayjs(date).format(format)
   return result
 }
 </script>

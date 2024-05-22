@@ -1,0 +1,13 @@
+# 方式一：travis encrypt --pro 你要加密的内容 --add deploy.api_key
+# 方式二 、：这里使用travis官网设置项目安全变量值API_KEY，把npm的token存到travis账号关联的当前项目下的环境变量API_KEY
+language: node_js
+node_js:
+  - node
+deploy:
+  provider: pnpm
+  email: ws_zhu@foxmail.com
+  skip_cleanup: true
+  api_key:
+    secure: $API_KEY
+  on:
+    tags: true

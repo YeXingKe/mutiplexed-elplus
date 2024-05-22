@@ -5,7 +5,7 @@ layout: home
 hero:
   name: 'mutiplexed-elplus'
   text: '高扩展性业务组件库'
-  tagline: My great project tagline
+  tagline: 个人组件库学习
   prev: '上一页'
   #  text: '上一页'
   next: '下一页'
@@ -19,7 +19,7 @@ hero:
       link: /intro/
     - theme: alt
       text: npm
-      link: /api-examples
+      link: https://www.npmjs.com/package/mutiplexed-elplus
 
 features:
   - icon: 🍈

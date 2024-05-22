@@ -44,17 +44,20 @@ let selectedValue = ref(props.selectedValue)
 const loadData = () => {
   loading.value = true
   options.value = []
-  return props.apiFun().then(
-    (data: any) => {
-      loading.value = false
-      options.value = data
-      return data
-    },
-    (err: any) => {
-      loading.value = false
-      options.value = [{ value: '-1', label: err.message, disabled: true }]
-      return Promise.reject(err)
-    }
+  return (
+    props.apiFun &&
+    props.apiFun().then(
+      (data: any) => {
+        loading.value = false
+        options.value = data
+        return data
+      },
+      (err: any) => {
+        loading.value = false
+        options.value = [{ value: '-1', label: err.message, disabled: true }]
+        return Promise.reject(err)
+      }
+    )
   )
 }
 
@@ -66,9 +69,9 @@ watch(selectedValue, (val: any) => {
   }
 })
 
-onMounted(() => {
+onMounted(async () => {
   if (props.apiFun) {
-    loadData()
+    await loadData()
   }
 })
 </script>

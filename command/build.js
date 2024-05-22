@@ -1,8 +1,11 @@
+// 打包方式二
 const path = require('path')
 const { defineConfig, build } = require('vite')
 const vue = require('@vitejs/plugin-vue')
 const vueJsx = require('@vitejs/plugin-vue-jsx')
 const WindiCSS = require('vite-plugin-windicss')
+const rollupDts = require('vite-plugin-dts')
+const DefineOptions = require('unplugin-vue-define-options/vite')
 const fsExtra = require('fs-extra')
 const fs = require('fs')
 
@@ -15,17 +18,39 @@ const outDir = path.resolve(__dirname, '../lib')
 const baseConfig = defineConfig({
   configFile: false,
   publicDir: false,
-  plugins: [vue(), vueJsx(), WindiCSS]
+  plugins: [
+    vue(),
+    vueJsx(),
+    WindiCSS,
+    rollupDts({
+      entryRoot: '../packages',
+      outDir: ['../dist'],
+      //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
+      tsconfigPath: '../tsconfig.json'
+    }),
+    DefineOptions()
+  ]
 })
 
 // rollup配置
 const rollupOptions = {
-  external: ['vue', 'vue-router', 'virtual:windi.css'],
+  external: ['vue', 'vue-router', 'virtual:windi.css', 'lodash-es'],
   output: {
     globals: {
       vue: 'Vue'
     }
   }
+}
+
+const copyFile = (sourcePath = '../default/index.d.ts', targetPath = '../lib') => {
+  const source = path.resolve(__dirname, sourcePath) // 源文件路径
+  const targetFolder = path.resolve(__dirname, targetPath) // 目标文件夹路径
+  const targetFilePath = path.join(targetFolder, 'index.d.ts') // 目标文件的完整路径
+
+  fs.promises
+    .copyFile(source, targetFilePath)
+    .then(() => console.log('文件复制成功'))
+    .catch(err => console.error(`复制文件时发生错误: ${err}`))
 }
 
 // 全量打包构建
@@ -36,13 +61,16 @@ const buildAll = async () => {
       rollupOptions,
       lib: {
         entry: path.resolve(enrtyDir, 'index.ts'),
-        name: 'mutiplexed-plus',
-        fileName: 'mutiplexed-plus',
+        name: 'index',
+        fileName: format => `index.${format}.js`,
         formats: ['es', 'umd']
       },
       outDir
     }
   })
+  // copyFile()
+  // copyFile('../package.json', '../lib/package.json')
+  // copyFile('../README.md', '../lib/README.md')
 }
 
 // 单组件打包构建
@@ -54,12 +82,13 @@ const buildSingle = async name => {
       lib: {
         entry: path.resolve(enrtyDir, name),
         name: 'index',
-        fileName: 'index',
+        fileName: format => `index.${format}.js`,
         formats: ['es', 'umd']
       },
       outDir: path.resolve(outDir, name)
     }
   })
+  // copyFile('../default/index.d.ts', `../lib/${name}`)
 }
 
 // 每个组件生成package.json

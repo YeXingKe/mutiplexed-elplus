@@ -1,8 +1,8 @@
 import { App } from 'vue'
-import selectNation from './src/index.vue'
+import LibNation from './src/index.vue'
 
 export default {
   install(app: App) {
-    app.component('lib-select-nation', selectNation)
+    app.component('lib-nation', LibNation)
   }
 }

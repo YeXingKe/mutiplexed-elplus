@@ -87,8 +87,9 @@
 </template>
 <script lang="ts" setup>
 import { PropType, ref, onMounted, watch, nextTick } from 'vue'
-import { FormInstance, FormOptions } from '../types/types'
-import cloneDeep from 'lodash/cloneDeep'
+// 由于Vue版本中interface defineProps一起用打包错误，暂时隐藏
+// import { FormInstance, FormOptions } from '../types/types'
+import { cloneDeep } from 'lodash-es'
 import E from 'wangeditor'
 
 let emits = defineEmits([
@@ -106,7 +107,7 @@ let emits = defineEmits([
 let props = defineProps({
   // 表单的配置项
   options: {
-    type: Array as PropType<FormOptions[]>,
+    type: Array as PropType<any[]>,
     required: true
   },
   // 用户自定义上传方法
@@ -117,7 +118,8 @@ let props = defineProps({
 
 let model = ref<any>(null)
 let rules = ref<any>(null)
-let form = ref<FormInstance | null>()
+// let form = ref<FormInstance | null>()
+let form = ref<any | null>()
 let edit = ref()
 
 // 初始化表单
@@ -125,7 +127,8 @@ let initForm = () => {
   if (props.options && props.options.length) {
     let m: any = {}
     let r: any = {}
-    props.options.map((item: FormOptions) => {
+    // FormOptions
+    props.options.map((item: any) => {
       m[item.prop!] = item.value
       r[item.prop!] = item.rules
       if (item.type === 'editor') {

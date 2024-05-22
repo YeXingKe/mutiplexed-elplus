@@ -45,7 +45,9 @@ export const getFileHash = (file, chunkSize) => {
 export const getFileHashWorker = (file, chunkSize) => {
   return new Promise(resolve => {
     const worker = new HashWorker()
-    worker.postMessage({ file, chunkSize })
+    if (worker.postMessage) {
+      worker.postMessage({ file, chunkSize })
+    }
     worker.onmessage = event => {
       resolve(event.data)
     }
@@ -96,7 +98,9 @@ export const getFileHashSample = (file, chunkSize) => {
 export const getFileHashWorkerSample = (file, chunkSize) => {
   return new Promise(resolve => {
     const worker = new SampleWorker()
-    worker.postMessage({ file, chunkSize })
+    if (worker?.postMessage) {
+      worker.postMessage({ file, chunkSize })
+    }
     worker.onmessage = event => {
       resolve(event.data)
     }

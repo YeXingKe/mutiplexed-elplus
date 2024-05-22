@@ -204,8 +204,8 @@ export class Util {
    * 数组去重
    */
   static distinct(a: any[], b: any[]): any[] {
-    const arr = a.concat(b)
-    const result = []
+    const arr: any = a.concat(b)
+    const result: any = []
     const obj: any = {}
 
     for (const i of arr) {
@@ -419,7 +419,7 @@ export class Util {
    * 生成一个length位的十六进制值，用作一次性 Key
    */
   static getOTP(length: number): string {
-    const arr = []
+    const arr: string[] = []
     for (let i = 0; i < length; i++) {
       arr.push(Util.getHex())
     }
@@ -430,5 +430,37 @@ export class Util {
    */
   static getTimeStampInSecond() {
     return Math.round(Date.now() / 1000)
+  }
+
+  // 将base64转换为文件,有ie兼容问题
+  static dataURLtoFile(data: any, fileName: string) {
+    const arr = data.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1])
+    let n = bstr.length
+    const u8arr = new Uint8Array(n)
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n)
+    }
+    return new File([u8arr], fileName, { type: mime })
+  }
+
+  // 将base64转换为blob
+  static dataURLtoBlob(data: any) {
+    const arr = data.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1])
+    let n = bstr.length
+    const u8arr = new Uint8Array(n)
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n)
+    }
+    return new Blob([u8arr], { type: mime })
+  }
+  // 将blob转换成file
+  static blobToFile(theBlob: any, fileName: string) {
+    theBlob.lastModifiedDate = new Date()
+    theBlob.name = fileName
+    return theBlob
   }
 }
