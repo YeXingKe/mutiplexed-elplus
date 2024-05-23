@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 // import checker from 'vite-plugin-checker'; // 检查ts语法
-// import AutoImport from 'unplugin-auto-import/vite'
-// import Components from 'unplugin-vue-components/vite'
-// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { svgBuilder } from './packages/icon/src/svg/index'
 // import eslintPlugin from 'vite-plugin-eslint'
 import dts from 'vite-plugin-dts'
@@ -18,6 +18,12 @@ export default defineConfig({
     vue(),
     WindiCSS(),
     svgBuilder('./src/assets/icons/'),
+    // AutoImport({
+    //   resolvers: [ElementPlusResolver()]
+    // }),
+    // Components({
+    //   resolvers: [ElementPlusResolver()]
+    // }),
     dts({
       entryRoot: './packages',
       // cleanVueFileName:true,// 打包文件为d.ts，默认false，文件为.vue.d.ts
@@ -72,6 +78,11 @@ export default defineConfig({
     }
   },
   build: {
+    chunkSizeWarningLimit: 10 * 1024 * 1024,
+    // cssCodeSplit: true,
+    minify: 'terser',
+    sourcemap: true,
+    reportCompressedSize: true,
     lib: {
       entry: 'packages/index.ts',
       name: 'index'
@@ -94,7 +105,7 @@ export default defineConfig({
           entryFileNames: '[name].es.js',
           //让打包目录和我们目录对应
           // preserveModules: true,
-          // 用于指定输出模块的导出模式,告诉Rollup在打包时保留并导出模块中的所有具名导出，使得这些导出能在导入时被明确引用
+          // 你的源代码中使用了ES模块的导出语法（例如export function foo() {}或export const bar = ...），Rollup将会保持这种导出模式，生成的bundle会暴露这些导出为命名导出
           exports: 'named'
         },
         {
@@ -105,6 +116,18 @@ export default defineConfig({
           //让打包目录和我们目录对应
           // preserveModules: true,
           exports: 'named'
+          // inlineDynamicImports: false,
+          // manualChunks(id) {
+          //   if (id.includes('node_modules')) {
+          //     if (
+          //       id.toString().split('node_modules/')[1].split('/')[0].includes('mutiplexed-elplus')
+          //     ) {
+          //       return 'mutiplexed-elplus'
+          //     } else {
+          //       return 'index'
+          //     }
+          //   }
+          // }
         }
       ]
     }

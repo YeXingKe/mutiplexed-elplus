@@ -4,8 +4,8 @@
 </template>
 <script setup lang='ts'>
 import { ref } from 'vue';
-import LibSignature from '../../../packages/signature/src/index.vue';
-
+// import LibSignature from '../../../packages/signature/src/index.vue';
+// import LibSignature from 'mutiplexed-elplus/dist/signature/src/index.vue';
 const imgSrc = ref('')
 const confirm = (val) => {
   imgSrc.value = val.imageData

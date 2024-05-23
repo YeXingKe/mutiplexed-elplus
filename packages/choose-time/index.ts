@@ -1,8 +1,9 @@
 import { App } from 'vue'
-import chooseTime from './src/index.vue'
+import LibChooseTime from './src/index.vue'
 
+export { LibChooseTime }
 export default {
   install(app: App) {
-    app.component('lib-choose-time', chooseTime)
+    app.component('lib-choose-time', LibChooseTime)
   }
 }

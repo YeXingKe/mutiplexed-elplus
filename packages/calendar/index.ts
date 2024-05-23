@@ -1,8 +1,9 @@
 import { App } from 'vue'
-import calendar from './src/index.vue'
+import LibCalendar from './src/index.vue'
 
+export { LibCalendar }
 export default {
   install(app: App) {
-    app.component('lib-calendar', calendar)
+    app.component('lib-calendar', LibCalendar)
   }
 }

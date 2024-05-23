@@ -1,8 +1,9 @@
 import { App } from 'vue'
-import dialog from './src/index.vue'
+import LibDialog from './src/index.vue'
 
+export { LibDialog }
 export default {
   install(app: App) {
-    app.component('lib-dialog', dialog)
+    app.component('lib-dialog', LibDialog)
   }
 }

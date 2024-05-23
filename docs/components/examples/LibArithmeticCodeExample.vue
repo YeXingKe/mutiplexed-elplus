@@ -6,9 +6,9 @@
 </template>
 <script setup lang='ts'>
 import { ref } from 'vue'
-import LibArithmeticCode from '../../../packages/verify-code/src/components/ArithmeticCode.vue';
+// import LibArithmeticCode from '../../../packages/verify-code/src/components/ArithmeticCode.vue';
 
-
+// import LibArithmeticCode from 'mutiplexed-elplus/dist/verify-code/src/components/ArithmeticCode.vue';
 const verifyCode = ref('')
 const getVerifyCode = (val) => {
   verifyCode.value = val

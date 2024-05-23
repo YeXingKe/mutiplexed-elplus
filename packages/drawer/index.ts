@@ -1,8 +1,9 @@
 import { App } from 'vue'
-import drawer from './src/index.vue'
+import LibDrawer from './src/index.vue'
 
+export { LibDrawer }
 export default {
   install(app: App) {
-    app.component('lib-drawer', drawer)
+    app.component('lib-drawer', LibDrawer)
   }
 }

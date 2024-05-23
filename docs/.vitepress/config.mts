@@ -4,7 +4,7 @@ import { containerPreview, componentPreview } from '@vitepress-demo-preview/plug
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'MutiplexedElPlus',
-  base: '/mutiplexed-elplus/',
+  base: 'vitepress/mutiplexed-elplus/',
   description: '高扩展性的组件库',
   lastUpdated: true,
   markdown: {
@@ -22,12 +22,12 @@ export default defineConfig({
   },
   themeConfig: {
     siteTitle: 'MutiplexedElPlus',
-    logo: '/vue3.png',
+    logo: 'vitepress/vue3.png',
     lastUpdatedText: '上次更新时间',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '组件', link: '/intro/' },
+      { text: '组件', link: 'vitepress/intro/' },
     ],
 
     sidebar: [
@@ -37,10 +37,10 @@ export default defineConfig({
           {
             text: '介绍',
             items: [
-              { text: '封装组件库介绍', link: '/intro/' },
-              { text: '如何搭建组件文档', link: '/intro/build' },
-              { text: '如何规范组件代码', link: '/intro/specs' },
-              { text: '测试组件代码用例', link: '/intro/test.md' }
+              { text: '封装组件库介绍', link: 'vitepress/intro/' },
+              { text: '如何搭建组件文档', link: 'vitepress/intro/build' },
+              { text: '如何规范组件代码', link: 'vitepress/intro/specs' },
+              { text: '测试组件代码用例', link: 'vitepress/intro/test.md' }
             ],
           },
           {
@@ -49,19 +49,19 @@ export default defineConfig({
             items: [
               {
                 text: '  水印指令',
-                link: '/directives/water-mask',
+                link: 'vitepress/directives/water-mask',
               },
               {
                 text: '  复制指令',
-                link: '/directives/copy',
+                link: 'vitepress/directives/copy',
               },
               {
                 text: '  拖拽指令',
-                link: '/directives/copy',
+                link: 'vitepress/directives/copy',
               },
               {
                 text: '  长按指令',
-                link: '/directives/copy',
+                link: 'vitepress/directives/copy',
               },
             ],
           },
@@ -71,27 +71,27 @@ export default defineConfig({
             items: [
               {
                 text: '字母数字混合验证码',
-                link: '/components/md/alphanumeric'
+                link: 'vitepress/components/md/alphanumeric'
               },
               {
                 text: '算术验证码',
-                link: '/components/md/arithmetic'
+                link: 'vitepress/components/md/arithmetic'
               },
               {
                 text: '滑块验证码',
-                link: '/components/md/slider'
+                link: 'vitepress/components/md/slider'
               },
               {
                 text: '图片旋转验证码',
-                link: '/components/md/rotate'
+                link: 'vitepress/components/md/rotate'
               },
               {
                 text: '拼图验证码',
-                link: '/components/md/picture'
+                link: 'vitepress/components/md/picture'
               },
               {
                 text: '文字顺序验证码',
-                link: '/components/md/characters'
+                link: 'vitepress/components/md/characters'
               },
             ],
           },
@@ -101,59 +101,59 @@ export default defineConfig({
             items: [
               {
                 text: '选择组件',
-                link: '/components/md/select',
+                link: 'vitepress/components/md/select',
               },
               {
                 text: '图标组件',
-                link: '/components/md/icon',
+                link: 'vitepress/components/md/icon',
               },
               {
                 text: '电子盖章',
-                link: '/components/md/stamp',
+                link: 'vitepress/components/md/stamp',
               },
               {
                 text: '电子签名',
-                link: '/components/md/signature',
+                link: 'vitepress/components/md/signature',
               },
               {
                 text: '表单组件',
-                link: '/components/md/form',
+                link: 'vitepress/components/md/form',
               },
               {
                 text: '表格组件',
-                link: '/components/md/table',
+                link: 'vitepress/components/md/table',
               },
               {
                 text: '字典组件',
-                link: '/components/md/dict',
+                link: 'vitepress/components/md/dict',
               },
               {
                 text: '日历组件',
-                link: '/components/md/calendar',
+                link: 'vitepress/components/md/calendar',
               },
               {
                 text: '附件组件',
-                link: '/components/md/attachment',
+                link: 'vitepress/components/md/attachment',
               },
               // {
               //   text: '弹窗组件',
-              //   link: '/components/md/modal',
+              //   link: 'vitepress/components/md/modal',
               // },
               // {
               //   text: '日志组件',
-              //   link: '/components/import/',
+              //   link: 'vitepress/components/import/',
               // },
               // {
               //   text: '角色组件',
-              //   link: '/components/import/',
+              //   link: 'vitepress/components/import/',
               // },
               // {
               //   text: '权限组件',
-              //   link: '/components/import/',
+              //   link: 'vitepress/components/import/',
               // },
               // {
               //   text: '字典组件',
-              //   link: '/components/md/dictionary/',
+              //   link: 'vitepress/components/md/dictionary/',
               // },
             ],
           },

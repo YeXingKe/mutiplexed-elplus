@@ -20,8 +20,9 @@
 <script lang="ts" setup>
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { FormOptions, FormInstance } from 'mutiplexed-elplus/dist/form';
+// import LibForm from '../../../packages/form';
 import { ref } from 'vue'
-
+// import LibForm from 'mutiplexed-elplus/dist/form/src/index.vue';
 interface Scope {
   form: FormInstance
   model: any

@@ -4,8 +4,8 @@ const { defineConfig, build } = require('vite')
 const vue = require('@vitejs/plugin-vue')
 const vueJsx = require('@vitejs/plugin-vue-jsx')
 const WindiCSS = require('vite-plugin-windicss')
-const rollupDts = require('vite-plugin-dts')
-const DefineOptions = require('unplugin-vue-define-options/vite')
+// const rollupDts = require('vite-plugin-dts')
+// const DefineOptions = require('unplugin-vue-define-options/vite')
 const fsExtra = require('fs-extra')
 const fs = require('fs')
 
@@ -21,14 +21,14 @@ const baseConfig = defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    WindiCSS,
-    rollupDts({
-      entryRoot: '../packages',
-      outDir: ['../dist'],
-      //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
-      tsconfigPath: '../tsconfig.json'
-    }),
-    DefineOptions()
+    WindiCSS
+    // rollupDts({
+    //   entryRoot: '../packages',
+    //   outDir: ['../dist'],
+    //   //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
+    //   tsconfigPath: '../tsconfig.json'
+    // }),
+    // DefineOptions()
   ]
 })
 
@@ -36,6 +36,7 @@ const baseConfig = defineConfig({
 const rollupOptions = {
   external: ['vue', 'vue-router', 'virtual:windi.css', 'lodash-es'],
   output: {
+    exports: 'named',
     globals: {
       vue: 'Vue'
     }
@@ -59,6 +60,7 @@ const buildAll = async () => {
     ...baseConfig,
     build: {
       rollupOptions,
+      chunkSizeWarningLimit: 1024 * 1024,
       lib: {
         entry: path.resolve(enrtyDir, 'index.ts'),
         name: 'index',
@@ -91,10 +93,15 @@ const buildSingle = async name => {
   // copyFile('../default/index.d.ts', `../lib/${name}`)
 }
 
+const capitalizeWords = str => {
+  return str.replace(/\-\w/g, function (char) {
+    return char.toUpperCase()
+  })
+}
 // 每个组件生成package.json
 const createPackageJson = name => {
   const fileStr = `{
-    "name":"${name}",
+    "name":"mutiplexed-elplus/Lib${capitalizeWords(name)}",
     "main":"index.umd.js",
     "module":"index.es.js",
     "style":"styles.css"

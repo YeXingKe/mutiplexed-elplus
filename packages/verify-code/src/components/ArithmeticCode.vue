@@ -40,12 +40,6 @@ let numb = ref(0)
 let op = ref('')
 
 let emits = defineEmits(['verify-code'])
-// watch(numa, val => {
-//   if (val && val > 0) {
-//     const correctAnswer = eval(`${numa.value}${op.value}${numb.value}`)
-//     emits('verify-code', correctAnswer)
-//   }
-// })
 function generateCode() {
   const operators = props.operators
   numa.value = Math.floor(Math.random() * 10)

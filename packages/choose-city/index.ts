@@ -1,8 +1,9 @@
 import { App } from 'vue'
-import chooseCity from './src/index.vue'
+import LibChooseCity from './src/index.vue'
 
+export { LibChooseCity }
 export default {
   install(app: App) {
-    app.component('lib-choose-city', chooseCity)
+    app.component('lib-choose-city', LibChooseCity)
   }
 }

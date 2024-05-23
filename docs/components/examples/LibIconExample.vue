@@ -37,8 +37,9 @@
 <script setup lang='ts'>
 import { ref } from 'vue';
 import { faHome, faEnvelope, faTable, faHouse } from '@fortawesome/free-solid-svg-icons'
-import LibIcon from '../../../packages/icon/src/index.vue';
-import LibIconList from '../../../packages/icon-list/src/index.vue'
-
+// import LibIcon from '../../../packages/icon/src/index.vue';
+// import LibIconList from '../../../packages/icon-list/src/index.vue'
+// import LibIcon from 'mutiplexed-elplus/dist/icon/src/index.vue';
+// import LibIconList from 'mutiplexed-elplus/dist/icon-list/src/index.vue';
 </script>
 <style lang='scss' scoped></style>

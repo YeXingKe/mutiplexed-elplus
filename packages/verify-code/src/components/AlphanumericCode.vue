@@ -42,12 +42,6 @@ const verifyCode = props.verifyCode
 const canvas = ref()
 let showCode = ref<Array<any>>([])
 let emits = defineEmits(['verify-code'])
-// console.log('asdkahdajsdas', showCode.value)
-// watch(showCode.value, val => {
-//   if (val && val?.length > 0) {
-//     emits('verify-code', val.join(''))
-//   }
-// })
 
 // 随机生成一个4位数的验证码
 function generateCode() {

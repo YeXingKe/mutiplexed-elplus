@@ -1,10 +1,10 @@
 import { App } from 'vue'
-import VerifyCode from './src/index.vue'
-import AlphanumericCode from './src/components/AlphanumericCode.vue'
-import ArithmeticCode from './src/components/ArithmeticCode.vue'
-import FixPictureCode from './src/components/FixPictureCode.vue'
-import RotateImgCode from './src/components/RotateImgCode.vue'
-import SliderCode from './src/components/SliderCode.vue'
+import LibVerifyCode from './src/index.vue'
+import LibAlphanumericCode from './src/components/AlphanumericCode.vue'
+import LibArithmeticCode from './src/components/ArithmeticCode.vue'
+import LibFixPictureCode from './src/components/FixPictureCode.vue'
+import LibRotateImgCode from './src/components/RotateImgCode.vue'
+import LibSliderCode from './src/components/SliderCode.vue'
 
 export type ComponentsType =
   | 'AlphanumericCode'
@@ -12,18 +12,22 @@ export type ComponentsType =
   | 'RotateImgCode'
   | 'SliderCode'
   | 'FixPictureCode'
-export * from './src/components/AlphanumericCode.vue'
-export * from './src/components/ArithmeticCode.vue'
-export * from './src/components/FixPictureCode.vue'
-export * from './src/components/RotateImgCode.vue'
-export * from './src/components/SliderCode.vue'
+
+export {
+  LibVerifyCode,
+  LibAlphanumericCode,
+  LibArithmeticCode,
+  LibFixPictureCode,
+  LibRotateImgCode,
+  LibSliderCode
+}
 export default {
   install(app: App) {
-    // app.component('lib-verify-code', VerifyCode)
-    app.component('lib-alphanumeric-code', AlphanumericCode)
-    app.component('lib-arithmetic-code', ArithmeticCode)
-    app.component('lib-fix-picture-code', FixPictureCode)
-    app.component('lib-rotate-img-code', RotateImgCode)
-    app.component('lib-slider-code', SliderCode)
+    app.component('lib-verify-code', LibVerifyCode)
+    app.component('lib-alphanumeric-code', LibAlphanumericCode)
+    app.component('lib-arithmetic-code', LibArithmeticCode)
+    app.component('lib-fix-picture-code', LibFixPictureCode)
+    app.component('lib-rotate-img-code', LibRotateImgCode)
+    app.component('lib-slider-code', LibSliderCode)
   }
 }

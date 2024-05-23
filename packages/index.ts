@@ -1,7 +1,5 @@
 import { App } from 'vue'
 import LibIcon from './icon'
-import LibList from './list'
-// import LibMenu from './menu'
 import LibChooseTime from './choose-time'
 import LibChooseCity from './choose-city'
 import LibForm from './form'
@@ -37,8 +35,6 @@ const components = [
   LibDialog,
   LibForm,
   LibIcon,
-  LibList,
-  // LibMenu,
   LibChooseTime,
   LibChooseCity,
   LibTable,
@@ -63,22 +59,25 @@ const install = (app: App) => {
 }
 
 export * from './defaultOptions'
-export * from './choose-time'
-export * from './choose-city'
-export * from './form'
-export * from './table'
-export * from './calendar'
-export * from './dialog'
-export * from './drawer'
-export * from './select'
-export * from './icon-list'
-export * from './attachment'
-export * from './verify-code'
-export * from './nation'
-export * from './stamp'
-export * from './signature'
-export * from './dict'
-export * from './directives'
+export {
+  LibStamp,
+  LibSignature,
+  LibNation,
+  LibDrawer,
+  LibDialog,
+  LibForm,
+  LibIcon,
+  LibChooseTime,
+  LibChooseCity,
+  LibTable,
+  LibCalendar,
+  LibSelect,
+  LibIconList,
+  LibDict,
+  LibAttachment,
+  LibVerifyCode,
+  directives
+}
 
 export default {
   install

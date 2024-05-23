@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import waterMarker from './modules/water-mask'
+import WaterMarker from './modules/water-mask'
 import copy from './modules/copy'
 import draggable from './modules/draggable'
 import throttle from './modules/throttle'
@@ -8,7 +8,7 @@ import longpress from './modules/longpress'
 
 const directivesList: any = {
   // Custom directives
-  waterMarker,
+  WaterMarker,
   copy,
   draggable,
   throttle,
@@ -25,6 +25,6 @@ const directives = {
   }
 }
 
-export * from './modules'
+export { WaterMarker, copy, draggable, throttle, debounce, longpress }
 
 export default directives

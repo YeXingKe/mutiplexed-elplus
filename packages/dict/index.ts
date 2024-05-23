@@ -1,6 +1,7 @@
 import { App } from 'vue'
 import LibDict from './src/index.vue'
 
+export { LibDict }
 export interface DictType {
   name: string
   value: string

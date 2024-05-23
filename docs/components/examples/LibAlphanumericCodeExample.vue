@@ -6,8 +6,8 @@
 </template>
 <script setup lang='ts'>
 import { ref } from 'vue'
-import LibAlphanumericCode from '../../../packages/verify-code/src/components/AlphanumericCode.vue';
-
+// import LibAlphanumericCode from '../../../packages/verify-code/src/components/AlphanumericCode.vue';
+// import LibAlphanumericCode from 'mutiplexed-elplus/dist/verify-code/src/components/AlphanumericCode.vue';
 
 const verifyCode = ref('')
 const getVerifyCode = (val) => {

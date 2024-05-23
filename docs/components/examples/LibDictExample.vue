@@ -7,6 +7,7 @@
 <script setup lang='ts'>
 import { ref } from 'vue';
 import LibDict from '../../../packages/dict/src/index.vue';
+// import LibDict from 'mutiplexed-elplus/dist/dict/src/index.vue';
 
 const testData = ref<Array<any>>([
   {

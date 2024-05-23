@@ -1,8 +1,10 @@
 import { App } from 'vue'
-import select from './src/index.vue'
+import LibSelect from './src/index.vue'
+import { SelectOptions } from './src/types'
 
+export { LibSelect, SelectOptions }
 export default {
   install(app: App) {
-    app.component('lib-select', select)
+    app.component('lib-select', LibSelect)
   }
 }

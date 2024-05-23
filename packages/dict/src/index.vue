@@ -95,7 +95,7 @@ const hasEdit = () => {
 }
 </script>
 <style lang="scss" scoped>
-::v-deep .vp-doc table {
+.vp-doc :deep(table) {
   margin: 0 !important;
 }
 

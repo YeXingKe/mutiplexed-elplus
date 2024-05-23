@@ -26,6 +26,8 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
 import { DatetimeColumn, StringColumn, TableOption, TableColumn, ButtonColumn } from 'mutiplexed-elplus';
+// import LibTable from '../../../packages/table/src/index.vue'
+// import LibTable from 'mutiplexed-elplus/dist/table/src/index.vue';
 import { ref, onMounted } from 'vue'
 
 let columns: TableColumn[] = [

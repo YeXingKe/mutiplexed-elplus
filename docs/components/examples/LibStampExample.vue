@@ -9,6 +9,7 @@
   </div>
 </template>
 <script setup lang='ts'>
-import LibStamp from '../../../packages/stamp/src/index.vue';
+// import LibStamp from '../../../packages/stamp/src/index.vue';
+// import LibStamp from 'mutiplexed-elplus/dist/stamp/src/index.vue';
 </script>
 <style lang='scss' scoped></style>
