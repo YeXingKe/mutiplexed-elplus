@@ -14,6 +14,10 @@ const enrtyDir = path.resolve(__dirname, '../packages')
 const outDir = path.resolve(__dirname, '../lib')
 // https://vitejs.dev/config/
 
+/**
+ * 此配置适用 packages/attachment 这种文件架构
+ */
+
 // configFile属性排除项目中vite配置文件
 const baseConfig = defineConfig({
   configFile: false,

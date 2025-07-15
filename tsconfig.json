@@ -15,6 +15,8 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "noEmit": true,
+    "declarationDir": "dist/types",
+    "types": ["vite/client","node"],
     "paths": {
       "~/*": ["./src/*"] // 配置特殊路径，防止打包失败
     }
